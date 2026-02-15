@@ -6,7 +6,7 @@
     <title>ALONE MODDER | TITAN PRESTIGE V20</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
-    
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
@@ -14,6 +14,8 @@
             --neon-cyan: #00f2ff;
             --bg-deep: #050a0f; 
             --glass: rgba(255, 255, 255, 0.03);
+            --yt-red: #ff0000;
+            --wa-green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -97,7 +99,23 @@
         footer { text-align: center; padding: 60px; color: #333; font-family:'Orbitron'; font-size: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-owner { color: var(--neon-cyan); font-weight: 900; letter-spacing: 2px; margin-top: 10px; display: block; font-size: 12px; }
 
-        .tg-fab { position: fixed; bottom: 25px; right: 25px; z-index: 1001; background: #229ED9; color: #fff; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-family: 'Orbitron'; font-size: 10px; font-weight: 900; }
+        /* Floating Buttons Container */
+        .fab-container {
+            position: fixed; bottom: 25px; right: 25px; z-index: 1001;
+            display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+        }
+
+        .fab {
+            padding: 12px 20px; border-radius: 50px; text-decoration: none;
+            font-family: 'Orbitron'; font-size: 10px; font-weight: 900;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;
+        }
+        .fab:hover { transform: scale(1.05); }
+
+        .tg-fab { background: #229ED9; color: #fff; }
+        .yt-fab { background: var(--yt-red); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .wa-fab { background: var(--wa-green); color: #fff; }
+
     </style>
 </head>
 <body>
@@ -115,7 +133,7 @@
                 <input type="password" id="pass" placeholder="ACCESS KEY">
             </div>
             <button class="auth-btn" onclick="handleAuth()">INITIALIZE UPLINK</button>
-            <p id="toggle-text" style="font-size: 11px; color: #444; margin-top: 20px;">New? <span style="color:var(--neon-cyan); cursor:pointer;" onclick="toggleAuth()">Create Profile</span></p>
+            <p id="toggle-text" style="font-size: 11px; color: #444; margin-top: 20px;">New? <span style="color:var(--neon-cyan); cursor:pointer;" onclick="onclick="toggleAuth()">Create Profile</span></p>
         </div>
     </div>
 
@@ -162,7 +180,11 @@
         </footer>
     </div>
 
-    <a href="https://t.me/AloneModderTEAM" target="_blank" class="tg-fab">TELEGRAM</a>
+    <div class="fab-container">
+        <a href="https://chat.whatsapp.com/YOUR_LINK" target="_blank" class="fab wa-fab">WHATSAPP</a>
+        <a href="https://youtube.com/@AloneModder" target="_blank" class="fab yt-fab">YOUTUBE</a>
+        <a href="https://t.me/AloneModderTEAM" target="_blank" class="fab tg-fab">TELEGRAM</a>
+    </div>
 
     <script>
         let isSignup = false;
