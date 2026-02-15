@@ -43,7 +43,7 @@
             pointer-events: none; 
         }
 
-        /* ===== LOADERS ===== */
+        /* ===== LOADERS (LOGO RE-ADDED) ===== */
         #loader, #action-loader, #auth-overlay {
             position: fixed; inset: 0; background: #000; z-index: 1000000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -67,7 +67,7 @@
             background: #000; display: flex; justify-content: center; align-items: center;
             overflow: hidden; z-index: 10; box-shadow: 0 0 30px var(--neon-cyan);
         }
-        .logo-inner span { font-family: 'Orbitron'; font-weight: 900; color: var(--neon-cyan); font-size: 24px; }
+        .logo-inner img { width: 100%; height: 100%; object-fit: cover; }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
@@ -93,7 +93,9 @@
         .main-ui.active { opacity: 1; display: block; }
 
         nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .nav-logo { font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 20px; font-weight: 900; letter-spacing: 2px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 20px; font-weight: 900; letter-spacing: 2px; }
+        .nav-logo img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid var(--neon-cyan); }
+        
         .owner-chip { font-size: 9px; color: #fff; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--neon-cyan); padding: 5px 15px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
 
         .hero { text-align: center; padding: 70px 0 50px; }
@@ -146,7 +148,7 @@
     <div id="loader">
         <div class="spinner-container">
             <div class="ring"></div>
-            <div class="logo-inner"><span>A</span></div>
+            <div class="logo-inner"><img src="logo.png" onerror="this.src='https://via.placeholder.com/80/000000/00f2ff?text=A'"></div>
         </div>
         <p id="boot-pct" style="font-family:'Orbitron'; color:var(--neon-cyan); letter-spacing:8px; font-weight: 900;">ALONE MODDER 0%</p>
     </div>
@@ -164,7 +166,10 @@
     </div>
 
     <div id="action-loader">
-        <div class="spinner-container" style="transform: scale(0.8);"><div class="ring"></div><div class="logo-inner"><span>M</span></div></div>
+        <div class="spinner-container" style="transform: scale(0.8);">
+            <div class="ring"></div>
+            <div class="logo-inner"><img src="logo.png" onerror="this.style.display='none'"></div>
+        </div>
         <p id="action-pct" style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight: 900;">0%</p>
         <p style="margin-top: 15px; color: #555; font-size: 10px; letter-spacing: 5px; text-transform: uppercase;">Bypassing Security Gateway...</p>
     </div>
@@ -173,7 +178,9 @@
 
     <div class="main-ui" id="mainUI">
         <nav>
-            <div class="nav-logo">ALONE MODDER</div>
+            <div class="nav-logo">
+                <img src="logo.png" onerror="this.style.display='none'"> ALONE MODDER
+            </div>
             <div class="owner-chip">OWNER: JOSHUA SAPICO</div>
         </nav>
 
@@ -215,7 +222,6 @@
     <script>
         let isSignup = false;
 
-        // Optimized Timer Function
         function runTimer(id, callback) {
             let val = 0;
             const text = document.getElementById(id);
@@ -273,51 +279,21 @@
                     initDashboard();
                 }, 800);
                 
-                // NO. 1 PROFESSIONAL PARTICLES CONFIGURATION
                 if(typeof particlesJS !== 'undefined') {
                     particlesJS("particles-js", {
                         "particles": {
                             "number": { "value": 110, "density": { "enable": true, "value_area": 800 } },
                             "color": { "value": "#00f2ff" },
                             "shape": { "type": "circle" },
-                            "opacity": { 
-                                "value": 0.8, /* High Visibility */
-                                "random": false, 
-                                "anim": { "enable": true, "speed": 1, "opacity_min": 0.3, "sync": false } 
-                            },
-                            "size": { 
-                                "value": 4.5, /* Large Size */
-                                "random": true, 
-                                "anim": { "enable": true, "speed": 3, "size_min": 0.5, "sync": false } 
-                            },
-                            "line_linked": { 
-                                "enable": true, 
-                                "distance": 150, 
-                                "color": "#00f2ff", 
-                                "opacity": 0.4, 
-                                "width": 1.5 
-                            },
-                            "move": { 
-                                "enable": true, 
-                                "speed": 2.2, 
-                                "direction": "none", 
-                                "random": false, 
-                                "straight": false, 
-                                "out_mode": "out", 
-                                "bounce": false 
-                            }
+                            "opacity": { "value": 0.8, "random": false, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3, "sync": false } },
+                            "size": { "value": 4.5, "random": true, "anim": { "enable": true, "speed": 3, "size_min": 0.5, "sync": false } },
+                            "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.4, "width": 1.5 },
+                            "move": { "enable": true, "speed": 2.2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
                         },
                         "interactivity": {
                             "detect_on": "canvas",
-                            "events": { 
-                                "onhover": { "enable": true, "mode": "grab" }, 
-                                "onclick": { "enable": true, "mode": "push" }, 
-                                "resize": true 
-                            },
-                            "modes": { 
-                                "grab": { "distance": 250, "line_linked": { "opacity": 0.6 } }, 
-                                "push": { "particles_nb": 4 } 
-                            }
+                            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                            "modes": { "grab": { "distance": 250, "line_linked": { "opacity": 0.6 } }, "push": { "particles_nb": 4 } }
                         },
                         "retina_detect": true
                     });
