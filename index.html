@@ -3,204 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALONE MODDER | PRESTIGE EXECUTIVE</title>
+    <title>ALONE MODDER | TITAN PRESTIGE V20</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
         :root {
-            --gold: #c3a343;
-            --dark-gold: #866d2d;
-            --black: #050505;
-            --gray: #1a1a1a;
-            --text: #e5e5e5;
+            --neon-cyan: #00f2ff;
+            /* Professional Deep Dark Gradient Colors */
+            --bg-top: #020b12; 
+            --bg-bottom: #000000;
+            --glass: rgba(255, 255, 255, 0.03);
+            --yt-red: #ff0000;
+            --wa-green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { 
-            background: var(--black);
-            color: var(--text); 
-            font-family: 'Tenor Sans', sans-serif; 
-            overflow-x: hidden;
-            letter-spacing: 1px;
+            /* Updated Background: Professional Dark Radial Gradient */
+            background: radial-gradient(circle at center, var(--bg-top) 0%, var(--bg-bottom) 100%); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            height: 100vh; width: 100vw; 
+            overflow: hidden; 
         }
 
-        /* ===== SUPREME LUXURY LOADER ===== */
-        #loader, #auth-overlay, #action-loader {
-            position: fixed; inset: 0; background: var(--black); z-index: 1000000;
+        #particles-js { position: fixed; inset: 0; z-index: 1; opacity: 0.5; }
+
+        /* ===== OLD LOADERS (RESTORED) ===== */
+        #loader, #action-loader, #auth-overlay {
+            position: fixed; inset: 0; background: #000; z-index: 1000000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.8s ease;
         }
+        #action-loader { display: none; background: rgba(0,0,0,0.98); z-index: 1000001; }
+        #auth-overlay { display: none; background: rgba(0,0,0,0.95); backdrop-filter: blur(25px); z-index: 999999; }
 
-        .loader-title {
-            font-family: 'Cinzel';
-            font-size: 25px;
-            color: var(--gold);
-            letter-spacing: 12px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+        .spinner-container {
+            position: relative; width: 130px; height: 130px;
+            display: flex; justify-content: center; align-items: center;
+            margin-bottom: 25px;
         }
+        .ring {
+            position: absolute; width: 100%; height: 100%;
+            border: 3px solid rgba(255,255,255,0.05); border-top: 3px solid var(--neon-cyan);
+            border-radius: 50%; animation: spin 0.8s linear infinite;
+        }
+        .logo-inner {
+            width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--neon-cyan);
+            background: #000; display: flex; justify-content: center; align-items: center;
+            overflow: hidden; z-index: 10; box-shadow: 0 0 25px var(--neon-cyan);
+        }
+        .logo-inner img { width: 100%; height: 100%; object-fit: cover; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        .premium-bar-container {
-            width: 250px; height: 1px; background: rgba(195, 163, 67, 0.1);
-            position: relative;
-        }
-        .premium-bar-fill {
-            position: absolute; height: 100%; width: 0%; background: var(--gold);
-            box-shadow: 0 0 15px var(--gold);
-        }
-
-        /* ===== AUTHENTICATION ===== */
+        /* ===== LOGIN & SIGNUP ===== */
         .auth-card {
-            background: var(--gray);
-            padding: 60px 40px;
-            border: 1px solid rgba(195, 163, 67, 0.2);
-            text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+            background: var(--glass); width: 90%; max-width: 400px;
+            padding: 40px; border-radius: 25px; border: 1px solid rgba(0, 242, 255, 0.2);
+            text-align: center; box-shadow: 0 0 60px rgba(0,0,0,1);
         }
-        .auth-card h2 { font-family: 'Cinzel'; color: var(--gold); letter-spacing: 5px; margin-bottom: 40px; font-size: 18px; }
+        .auth-card h2 { font-family: 'Orbitron'; font-size: 18px; letter-spacing: 3px; margin-bottom: 25px; color: var(--neon-cyan); }
         .input-box input {
-            width: 300px; padding: 15px; background: transparent;
-            border: none; border-bottom: 1px solid #333; color: #fff;
-            margin-bottom: 20px; text-align: center; outline: none; transition: 0.4s;
+            width: 100%; padding: 14px; background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+            color: #fff; font-size: 14px; margin-top: 10px; outline: none;
         }
-        .input-box input:focus { border-bottom: 1px solid var(--gold); }
-        .auth-btn {
-            background: var(--gold); color: #000; border: none;
-            padding: 15px 50px; font-family: 'Cinzel'; font-weight: 900;
-            cursor: pointer; margin-top: 20px; letter-spacing: 3px; transition: 0.4s;
-        }
-        .auth-btn:hover { background: #fff; letter-spacing: 5px; }
+        .auth-btn { width: 100%; padding: 15px; background: var(--neon-cyan); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; margin-top: 25px; letter-spacing: 2px; }
 
-        /* ===== MAIN INTERFACE ===== */
-        .main-ui { display: none; opacity: 0; transition: 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
-        
-        nav { 
-            display: flex; justify-content: center; align-items: center; 
-            padding: 50px 0; border-bottom: 1px solid rgba(195, 163, 67, 0.1);
-        }
-        .nav-logo { font-family: 'Cinzel'; font-size: 28px; letter-spacing: 10px; color: var(--gold); font-weight: 900; }
+        /* ===== MAIN DASHBOARD ===== */
+        .main-ui { position: relative; z-index: 10; width: 100%; height: 100vh; overflow-y: auto; opacity: 0; transition: 1s ease; padding: 0 5%; display: none; }
+        .main-ui.active { opacity: 1; display: block; }
 
-        .hero { text-align: center; padding: 120px 20px 80px; }
-        .hero span { font-size: 12px; letter-spacing: 8px; color: var(--dark-gold); text-transform: uppercase; }
-        .hero h1 { 
-            font-family: 'Cinzel'; font-size: clamp(40px, 10vw, 90px); 
-            margin: 20px 0; font-weight: 400; color: #fff;
-            text-shadow: 0 0 50px rgba(195, 163, 67, 0.2);
-        }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 18px; }
+        .nav-logo img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid var(--neon-cyan); }
 
-        /* ===== LUXE GRID ===== */
-        .grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 50px; max-width: 1400px; margin: 0 auto; padding: 0 60px 150px;
-        }
-        .card { 
-            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
-            padding: 60px 40px; border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.5s; text-align: center;
-        }
-        .card:hover { 
-            border-color: var(--gold);
-            transform: translateY(-15px);
-            background: rgba(195, 163, 67, 0.02);
-        }
-        .card h3 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 20px; letter-spacing: 4px; font-size: 20px; }
-        .card p { font-size: 13px; color: #888; line-height: 2; margin-bottom: 40px; }
+        .owner-chip { font-size: 9px; color: #fff; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--neon-cyan); padding: 5px 15px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .hero { text-align: center; padding: 60px 0 40px; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(30px, 8vw, 60px); background: linear-gradient(#fff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 8px; font-weight: 900; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding-bottom: 80px; }
+        .card { background: rgba(0, 242, 255, 0.02); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.1); transition: 0.4s; backdrop-filter: blur(10px); }
+        .card:hover { border-color: var(--neon-cyan); transform: translateY(-8px); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); }
+        .card h3 { font-family: 'Orbitron'; color: var(--neon-cyan); margin-bottom: 10px; }
 
         .rare-btn {
-            text-decoration: none; color: #fff; font-size: 11px;
-            letter-spacing: 4px; padding: 15px 30px; border: 1px solid var(--gold);
-            text-transform: uppercase; transition: 0.4s; font-family: 'Cinzel';
+            display: block; text-align: center; width: 100%; padding: 18px; margin-top: 25px; background: #000;
+            border: 1px solid var(--neon-cyan); color: #fff; border-radius: 12px;
+            font-family: 'Orbitron'; font-size: 11px; font-weight: 900; letter-spacing: 2px;
+            text-decoration: none; transition: 0.4s;
         }
-        .rare-btn:hover { background: var(--gold); color: #000; box-shadow: 0 10px 30px rgba(195, 163, 67, 0.3); }
+        .rare-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px var(--neon-cyan); }
 
-        /* ===== SOCIALS ===== */
-        .social-fixed {
-            position: fixed; bottom: 50px; width: 100%;
-            display: flex; justify-content: center; gap: 40px; z-index: 999;
-        }
-        .social-fixed a {
-            color: #444; text-decoration: none; font-size: 10px;
-            letter-spacing: 3px; font-family: 'Cinzel'; transition: 0.4s;
-        }
-        .social-fixed a:hover { color: var(--gold); transform: translateY(-5px); }
+        footer { text-align: center; padding: 60px; color: #444; font-family:'Orbitron'; font-size: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-owner { color: var(--neon-cyan); font-weight: 900; letter-spacing: 2px; margin-top: 10px; display: block; font-size: 12px; }
 
-        footer { text-align: center; padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.03); margin-bottom: 100px; }
+        /* Floating Buttons */
+        .fab-container {
+            position: fixed; bottom: 25px; right: 25px; z-index: 1001;
+            display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+        }
+        .fab {
+            padding: 12px 20px; border-radius: 50px; text-decoration: none;
+            font-family: 'Orbitron'; font-size: 10px; font-weight: 900;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;
+        }
+        .tg-fab { background: #229ED9; color: #fff; }
+        .yt-fab { background: var(--yt-red); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .wa-fab { background: var(--wa-green); color: #fff; }
+
     </style>
 </head>
 <body>
 
     <div id="loader">
-        <div class="loader-title">ALONE MODDER</div>
-        <div class="premium-bar-container"><div class="premium-bar-fill" id="boot-bar"></div></div>
+        <div class="spinner-container"><div class="ring"></div><div class="logo-inner"><img src="logo.png" onerror="this.src='https://via.placeholder.com/80/000000/00f2ff?text=A'"></div></div>
+        <p id="boot-pct" style="font-family:'Orbitron'; color:var(--neon-cyan); letter-spacing:8px;">ALONE MODDER 0%</p>
     </div>
 
-    <div id="auth-overlay" style="display:none;">
+    <div id="auth-overlay">
         <div class="auth-card">
-            <h2>PRIVATE ENTRANCE</h2>
+            <h2>ALONE MODDER LOGIN</h2>
             <div class="input-box">
-                <input type="text" id="username" placeholder="MEMBER IDENTITY">
-                <input type="password" id="pass" placeholder="ACCESS TOKEN">
+                <input type="text" id="username" placeholder="IDENTITY NAME">
+                <input type="password" id="pass" placeholder="ACCESS KEY">
             </div>
-            <button class="auth-btn" onclick="handleAuth()">UNVUELL ASSETS</button>
+            <button class="auth-btn" onclick="handleAuth()">INITIALIZE UPLINK</button>
+            <p id="toggle-text" style="font-size: 11px; color: #444; margin-top: 20px;">New? <span style="color:var(--neon-cyan); cursor:pointer;" onclick="toggleAuth()">Create Profile</span></p>
         </div>
     </div>
 
-    <div id="action-loader" style="display:none;">
-        <div class="loader-title" style="font-size: 14px;">GRANTING ACCESS</div>
-        <div class="premium-bar-container"><div class="premium-bar-fill" id="action-bar"></div></div>
+    <div id="action-loader">
+        <div class="spinner-container" style="transform: scale(0.8);"><div class="ring"></div><div class="logo-inner"><img src="logo.png"></div></div>
+        <p id="action-pct" style="font-family:'Orbitron'; color:var(--neon-cyan);">0%</p>
+        <p style="margin-top: 15px; color: #444; font-size: 10px; letter-spacing: 5px;">BYPASSING GATEWAY...</p>
     </div>
+
+    <div id="particles-js"></div>
 
     <div class="main-ui" id="mainUI">
         <nav>
-            <div class="nav-logo">ALONE MODDER</div>
+            <div class="nav-logo"><img src="logo.png" onerror="this.style.display='none'"> ALONE MODDER</div>
+            <div class="owner-chip">OWNER: JOSHUA SAPICO</div>
         </nav>
 
         <section class="hero">
-            <span>The Signature Collection</span>
-            <h1>PRESTIGE V20</h1>
-            <p style="color: #555; letter-spacing: 5px; text-transform: uppercase; font-size: 10px;">Curated Digital Experiences by Joshua Sapico</p>
+            <h1>ALONE MODDER</h1>
+            <p style="color: #666; letter-spacing: 5px; font-size: 12px; margin-top: 10px; font-weight: 900;">TITAN PRESTIGE V20</p>
         </section>
 
         <div class="grid">
             <div class="card">
                 <h3>SUBWAY SURF</h3>
-                <p>The definitive prestige edition. Every element meticulously unlocked for the ultimate aesthetic experience.</p>
-                <a href="https://www.mediafire.com/file/h1vpdrzi85dj9jb/Subway_Surf_3.10.1.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">Secure Asset</a>
+                <p style="color:#888; font-size:14px;">v3.10.1 Prestige Mod. Everything Unlocked.</p>
+                <a href="https://www.mediafire.com/file/h1vpdrzi85dj9jb/Subway_Surf_3.10.1.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">⚡ GET APK</a>
             </div>
             <div class="card">
                 <h3>PROJECT V4</h3>
-                <p>A masterclass in optimization. The DZ SFG2 architecture refined for the elite performance seekers.</p>
-                <a href="https://www.mediafire.com/file/uwkimb3qun41gbw/DZ_SFG2_PROJECT_2.8_opt.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">Secure Asset</a>
+                <p style="color:#888; font-size:14px;">DZ SFG2 Optimized build for high performance.</p>
+                <a href="https://www.mediafire.com/file/uwkimb3qun41gbw/DZ_SFG2_PROJECT_2.8_opt.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">💠 GET APK</a>
             </div>
             <div class="card">
-                <h3>MOD HELPER PRO</h3>
-                <p>The cornerstone of digital craft. A sophisticated toolkit for those who demand precision and power.</p>
-                <a href="https://www.mediafire.com/file/1dzxnxq91kz2gyg/Moding_Helper_Pro_2.2.5%2528test%2529.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">Secure Asset</a>
+                <h3>MODDING HELPER HUB</h3>
+                <p style="color:#888; font-size:14px;">MODDING HELPER HUB LATEST VERSION v2.2.5.</p>
+                <a href="https://www.mediafire.com/file/1dzxnxq91kz2gyg/Moding_Helper_Pro_2.2.5%2528test%2529.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">🔱 GET APK</a>
             </div>
         </div>
 
         <footer>
-            <div class="nav-logo" style="font-size: 14px; opacity: 0.3;">ALONE MODDER</div>
-            <p style="font-size:8px; letter-spacing:4px; margin-top: 20px; color: #333;">© 2026 JOSHUA SAPICO. ALL RIGHTS RESERVED.</p>
+            © 2026 ALONE MODDER // ALL RIGHTS RESERVED
+            <span class="footer-owner">OWNER: ALONE MODDER / JOSHUA SAPICO</span>
         </footer>
     </div>
 
-    <div class="social-fixed">
-        <a href="https://chat.whatsapp.com/YOUR_LINK" target="_blank">WHATSAPP</a>
-        <a href="https://youtube.com/@alonemodder" target="_blank" style="color: var(--gold);">YOUTUBE</a>
-        <a href="https://t.me/AloneModderTEAM" target="_blank">TELEGRAM</a>
+    <div class="fab-container">
+        <a href="https://chat.whatsapp.com/YOUR_LINK" target="_blank" class="fab wa-fab">WHATSAPP</a>
+        <a href="https://youtube.com/@alonemodderyt?si=iEEDb6ftLa5sIRnZ" target="_blank" class="fab yt-fab">YOUTUBE</a>
+        <a href="https://t.me/AloneModderTEAM" target="_blank" class="fab tg-fab">TELEGRAM</a>
     </div>
 
     <script>
-        function fillBar(id, callback) {
-            let w = 0;
-            const bar = document.getElementById(id);
-            const int = setInterval(() => {
-                w += Math.random() * 4;
-                if(w >= 100) { w = 100; clearInterval(int); callback(); }
-                bar.style.width = w + "%";
-            }, 50);
+        let isSignup = false;
+
+        function runTimer(id, callback) {
+            let val = 0;
+            const text = document.getElementById(id);
+            const timer = setInterval(() => {
+                val += Math.floor(Math.random() * 8) + 4;
+                if(val >= 100) { val = 100; clearInterval(timer); callback(); }
+                // Fixed Name in Loader
+                text.innerText = (id === 'boot-pct' ? "ALONE MODDER " : "") + val + "%";
+            }, 60); 
+        }
+
+        function toggleAuth() {
+            isSignup = !isSignup;
+            document.getElementById('auth-title').innerText = isSignup ? "ALONE MODDER: NEW PROFILE" : "ALONE MODDER LOGIN";
+            document.getElementById('toggle-text').innerHTML = isSignup ? 'Already a user? <span style="color:var(--neon-cyan); cursor:pointer;" onclick="toggleAuth()">Login</span>' : 'New? <span style="color:var(--neon-cyan); cursor:pointer;" onclick="toggleAuth()">Create Profile</span>';
         }
 
         function handleAuth() {
@@ -208,35 +210,45 @@
             if(u.length > 2) {
                 localStorage.setItem('alone_session', u);
                 document.getElementById('auth-overlay').style.display = 'none';
-                showUI();
-            } else { alert("Verification Failed."); }
+                initDashboard();
+            } else { alert("ACCESS DENIED: Enter Details!"); }
         }
 
-        function showUI() {
+        function initDashboard() {
             if(localStorage.getItem('alone_session')) {
-                const ui = document.getElementById('mainUI');
-                ui.style.display = 'block';
-                setTimeout(() => { ui.style.opacity = '1'; }, 100);
-            } else {
-                document.getElementById('auth-overlay').style.display = 'flex';
+                document.getElementById('mainUI').style.display = 'block';
+                setTimeout(() => { document.getElementById('mainUI').classList.add('active'); }, 50);
+            } else { 
+                document.getElementById('auth-overlay').style.display = 'flex'; 
             }
         }
 
         function triggerBypass(e, url) {
             e.preventDefault();
             document.getElementById('action-loader').style.display = 'flex';
-            fillBar('action-bar', () => {
+            runTimer('action-pct', () => {
                 setTimeout(() => {
                     document.getElementById('action-loader').style.display = 'none';
                     window.open(url, '_blank');
-                }, 400);
+                }, 300);
             });
         }
 
         window.onload = () => {
-            fillBar('boot-bar', () => {
+            runTimer('boot-pct', () => {
                 document.getElementById('loader').style.display = 'none';
-                showUI();
+                initDashboard();
+                if(typeof particlesJS !== 'undefined') {
+                    particlesJS("particles-js", {
+                        "particles": {
+                            "number": { "value": 60 },
+                            "color": { "value": "#00f2ff" },
+                            "opacity": { "value": 0.3 },
+                            "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.1 },
+                            "move": { "enable": true, "speed": 1.5 }
+                        }
+                    });
+                }
             });
         };
     </script>
