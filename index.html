@@ -11,7 +11,6 @@
     <style>
         :root {
             --neon-cyan: #00f2ff;
-            /* Professional Deep Dark Gradient Colors */
             --bg-top: #020b12; 
             --bg-bottom: #000000;
             --glass: rgba(255, 255, 255, 0.03);
@@ -20,18 +19,32 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            /* Updated Background: Professional Dark Radial Gradient */
-            background: radial-gradient(circle at center, var(--bg-top) 0%, var(--bg-bottom) 100%); 
+            /* No. 1 Professional Animated Background */
+            background: linear-gradient(-45deg, #000000, #020b12, #001a1a, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #fff; 
             font-family: 'Inter', sans-serif; 
             height: 100vh; width: 100vw; 
             overflow: hidden; 
         }
 
-        #particles-js { position: fixed; inset: 0; z-index: 1; opacity: 0.5; }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        /* ===== OLD LOADERS (RESTORED) ===== */
+        #particles-js { 
+            position: fixed; 
+            inset: 0; 
+            z-index: 1; 
+            pointer-events: none; /* Allows clicking through particles */
+        }
+
+        /* ===== LOADERS (UNCHANGED) ===== */
         #loader, #action-loader, #auth-overlay {
             position: fixed; inset: 0; background: #000; z-index: 1000000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -58,11 +71,12 @@
         .logo-inner img { width: 100%; height: 100%; object-fit: cover; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* ===== LOGIN & SIGNUP ===== */
+        /* ===== AUTH PANEL ===== */
         .auth-card {
             background: var(--glass); width: 90%; max-width: 400px;
             padding: 40px; border-radius: 25px; border: 1px solid rgba(0, 242, 255, 0.2);
             text-align: center; box-shadow: 0 0 60px rgba(0,0,0,1);
+            position: relative; z-index: 10;
         }
         .auth-card h2 { font-family: 'Orbitron'; font-size: 18px; letter-spacing: 3px; margin-bottom: 25px; color: var(--neon-cyan); }
         .input-box input {
@@ -72,7 +86,7 @@
         }
         .auth-btn { width: 100%; padding: 15px; background: var(--neon-cyan); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; margin-top: 25px; letter-spacing: 2px; }
 
-        /* ===== MAIN DASHBOARD ===== */
+        /* ===== MAIN UI ===== */
         .main-ui { position: relative; z-index: 10; width: 100%; height: 100vh; overflow-y: auto; opacity: 0; transition: 1s ease; padding: 0 5%; display: none; }
         .main-ui.active { opacity: 1; display: block; }
 
@@ -86,7 +100,14 @@
         .hero h1 { font-family: 'Orbitron'; font-size: clamp(30px, 8vw, 60px); background: linear-gradient(#fff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 8px; font-weight: 900; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding-bottom: 80px; }
-        .card { background: rgba(0, 242, 255, 0.02); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.1); transition: 0.4s; backdrop-filter: blur(10px); }
+        .card { 
+            background: rgba(0, 242, 255, 0.02); 
+            padding: 40px; 
+            border-radius: 20px; 
+            border: 1px solid rgba(0, 242, 255, 0.1); 
+            transition: 0.4s; 
+            backdrop-filter: blur(15px); /* Professional Glass Effect */
+        }
         .card:hover { border-color: var(--neon-cyan); transform: translateY(-8px); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); }
         .card h3 { font-family: 'Orbitron'; color: var(--neon-cyan); margin-bottom: 10px; }
 
@@ -101,7 +122,6 @@
         footer { text-align: center; padding: 60px; color: #444; font-family:'Orbitron'; font-size: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-owner { color: var(--neon-cyan); font-weight: 900; letter-spacing: 2px; margin-top: 10px; display: block; font-size: 12px; }
 
-        /* Floating Buttons */
         .fab-container {
             position: fixed; bottom: 25px; right: 25px; z-index: 1001;
             display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
@@ -126,7 +146,7 @@
 
     <div id="auth-overlay">
         <div class="auth-card">
-            <h2>ALONE MODDER LOGIN</h2>
+            <h2 id="auth-title">ALONE MODDER LOGIN</h2>
             <div class="input-box">
                 <input type="text" id="username" placeholder="IDENTITY NAME">
                 <input type="password" id="pass" placeholder="ACCESS KEY">
@@ -194,7 +214,6 @@
             const timer = setInterval(() => {
                 val += Math.floor(Math.random() * 8) + 4;
                 if(val >= 100) { val = 100; clearInterval(timer); callback(); }
-                // Fixed Name in Loader
                 text.innerText = (id === 'boot-pct' ? "ALONE MODDER " : "") + val + "%";
             }, 60); 
         }
@@ -238,15 +257,25 @@
             runTimer('boot-pct', () => {
                 document.getElementById('loader').style.display = 'none';
                 initDashboard();
+                
+                // NO. 1 PROFESSIONAL PARTICLES CONFIGURATION
                 if(typeof particlesJS !== 'undefined') {
                     particlesJS("particles-js", {
                         "particles": {
-                            "number": { "value": 60 },
+                            "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
                             "color": { "value": "#00f2ff" },
-                            "opacity": { "value": 0.3 },
-                            "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.1 },
-                            "move": { "enable": true, "speed": 1.5 }
-                        }
+                            "shape": { "type": "circle" },
+                            "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                            "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                            "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.2, "width": 1 },
+                            "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                        },
+                        "interactivity": {
+                            "detect_on": "canvas",
+                            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                            "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } }, "push": { "particles_nb": 4 } }
+                        },
+                        "retina_detect": true
                     });
                 }
             });
