@@ -130,19 +130,19 @@
             <div class="card">
                 <h3>SUBWAY SURF</h3>
                 <p style="color:#888; font-size:13px;">v3.10.1 Prestige Mod. Everything Unlocked.</p>
-                <a href="https://www.mediafire.com/file/h1vpdrzi85dj9jb/Subway_Surf_3.10.1.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">⚡ GET LINK</a>
+                <a href="https://www.mediafire.com/file/h1vpdrzi85dj9jb/Subway_Surf_3.10.1.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">⚡ GET APK</a>
             </div>
 
             <div class="card">
                 <h3>PROJECT V4</h3>
                 <p style="color:#888; font-size:13px;">DZ SFG2 Optimized build for high FPS.</p>
-                <a href="https://www.mediafire.com/file/uwkimb3qun41gbw/DZ_SFG2_PROJECT_2.8_opt.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">💠 GET LINK</a>
+                <a href="https://www.mediafire.com/file/uwkimb3qun41gbw/DZ_SFG2_PROJECT_2.8_opt.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">💠 GET APK</a>
             </div>
 
             <div class="card">
-                <h3>MOD MENU 4.0</h3>
-                <p style="color:#888; font-size:13px;">ANDROID MOD MENU 4.0 LATEST UPDATE.</p>
-                <a href="https://www.mediafire.com/file/i293mxfgylqp4qg/Android-Mod-Menu-4.0.zip/file" class="rare-btn" onclick="triggerBypass(event, this.href)">🔱 GET LINK</a>
+                <h3>MODDING HELPER HUB</h3>
+                <p style="color:#888; font-size:13px;">MODDING HELPER HUB LATEST VERSION v2.2.5.</p>
+                <a href="https://www.mediafire.com/file/1dzxnxq91kz2gyg/Moding_Helper_Pro_2.2.5%2528test%2529.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">🔱 GET APK</a>
             </div>
         </div>
 
@@ -153,29 +153,28 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Progress Timer with fail-safe
         function runTimer(id, callback) {
             let val = 0;
             const text = document.getElementById(id);
             const interval = setInterval(() => {
-                val += Math.floor(Math.random() * 8) + 5; 
+                val += Math.floor(Math.random() * 12) + 5; 
                 if (val >= 100) {
                     val = 100;
                     clearInterval(interval);
                     callback();
                 }
                 text.innerText = val + "%";
-            }, 50);
+            }, 60);
         }
 
         function handleAuth() {
             const u = document.getElementById('username').value;
             const p = document.getElementById('pass').value;
-            if(u.length > 2 && p.length > 2) {
+            if(u.length > 1 && p.length > 1) {
                 localStorage.setItem('alone_user', u);
                 document.getElementById('auth-overlay').style.display = 'none';
                 initDashboard();
-            } else { alert("Enter valid details!"); }
+            } else { alert("ACCESS DENIED!"); }
         }
 
         function initDashboard() {
@@ -200,20 +199,16 @@
             });
         }
 
-        // Start Boot sequence
         window.onload = () => {
             runTimer('boot-pct', () => {
                 document.getElementById('loader').style.display = 'none';
                 initDashboard();
-                
-                // Load particles safely
                 if(typeof particlesJS !== 'undefined') {
                     particlesJS("particles-js", {
                         "particles": {
                             "number": { "value": 40 },
                             "color": { "value": "#ffcc00" },
                             "opacity": { "value": 0.2 },
-                            "size": { "value": 2 },
                             "line_linked": { "enable": true, "distance": 120, "color": "#ffcc00", "opacity": 0.1 },
                             "move": { "enable": true, "speed": 1 }
                         }
