@@ -6,6 +6,7 @@
     <title>ALONE MODDER | TITAN PRESTIGE V20</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
@@ -53,18 +54,17 @@
         .logo-inner img { width: 100%; height: 100%; object-fit: cover; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* ===== LOGIN & SIGNUP SYSTEM ===== */
+        /* ===== LOGIN & SIGNUP ===== */
         .auth-card {
             background: var(--glass); width: 90%; max-width: 400px;
             padding: 40px; border-radius: 25px; border: 1px solid rgba(0, 242, 255, 0.2);
             text-align: center; box-shadow: 0 0 60px rgba(0,0,0,1);
         }
         .auth-card h2 { font-family: 'Orbitron'; font-size: 18px; letter-spacing: 3px; margin-bottom: 25px; color: var(--neon-cyan); }
-        .input-box { margin-top: 15px; text-align: left; }
         .input-box input {
             width: 100%; padding: 14px; background: rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
-            color: #fff; font-size: 14px; margin-top: 5px; outline: none;
+            color: #fff; font-size: 14px; margin-top: 10px; outline: none;
         }
         .auth-btn { width: 100%; padding: 15px; background: var(--neon-cyan); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; margin-top: 25px; letter-spacing: 2px; }
 
@@ -76,12 +76,14 @@
         .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 18px; }
         .nav-logo img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid var(--neon-cyan); }
 
+        .owner-chip { font-size: 9px; color: #fff; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--neon-cyan); padding: 5px 15px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+
         .hero { text-align: center; padding: 60px 0 40px; }
         .hero h1 { font-family: 'Orbitron'; font-size: clamp(30px, 8vw, 60px); background: linear-gradient(#fff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 8px; font-weight: 900; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding-bottom: 80px; }
         .card { background: rgba(0, 242, 255, 0.02); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.1); transition: 0.4s; backdrop-filter: blur(10px); }
-        .card:hover { border-color: var(--neon-cyan); transform: translateY(-8px); }
+        .card:hover { border-color: var(--neon-cyan); transform: translateY(-8px); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); }
         .card h3 { font-family: 'Orbitron'; color: var(--neon-cyan); margin-bottom: 10px; }
 
         .rare-btn {
@@ -91,6 +93,9 @@
             text-decoration: none; transition: 0.4s;
         }
         .rare-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px var(--neon-cyan); }
+
+        footer { text-align: center; padding: 60px; color: #333; font-family:'Orbitron'; font-size: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-owner { color: var(--neon-cyan); font-weight: 900; letter-spacing: 2px; margin-top: 10px; display: block; font-size: 12px; }
 
         .tg-fab { position: fixed; bottom: 25px; right: 25px; z-index: 1001; background: #229ED9; color: #fff; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-family: 'Orbitron'; font-size: 10px; font-weight: 900; }
     </style>
@@ -104,10 +109,6 @@
 
     <div id="auth-overlay">
         <div class="auth-card">
-            <div class="spinner-container" style="transform: scale(0.6); margin-bottom: 0; height: 100px;">
-                <div class="ring"></div>
-                <div class="logo-inner"><img src="logo.png" onerror="this.src='https://via.placeholder.com/80/000000/00f2ff?text=A'"></div>
-            </div>
             <h2 id="auth-title">SYSTEM LOGIN</h2>
             <div class="input-box">
                 <input type="text" id="username" placeholder="IDENTITY NAME">
@@ -129,7 +130,7 @@
     <div class="main-ui" id="mainUI">
         <nav>
             <div class="nav-logo"><img src="logo.png"> ALONE MODDER</div>
-            <div id="session-info" style="font-size: 9px; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 5px 12px; border-radius: 50px;">SESSION: ACTIVE</div>
+            <div class="owner-chip">OWNER: JOSHUA SAPICO</div>
         </nav>
 
         <section class="hero">
@@ -143,13 +144,11 @@
                 <p style="color:#666; font-size:14px;">v3.10.1 Prestige Mod. Everything Unlocked.</p>
                 <a href="https://www.mediafire.com/file/h1vpdrzi85dj9jb/Subway_Surf_3.10.1.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">⚡ GET APK</a>
             </div>
-
             <div class="card">
                 <h3>PROJECT V4</h3>
-                <p style="color:#666; font-size:14px;">DZ SFG2 Optimized build for high FPS performance.</p>
+                <p style="color:#666; font-size:14px;">DZ SFG2 Optimized build for high performance.</p>
                 <a href="https://www.mediafire.com/file/uwkimb3qun41gbw/DZ_SFG2_PROJECT_2.8_opt.apk/file" class="rare-btn" onclick="triggerBypass(event, this.href)">💠 GET APK</a>
             </div>
-
             <div class="card">
                 <h3>MODDING HELPER HUB</h3>
                 <p style="color:#666; font-size:14px;">MODDING HELPER HUB LATEST VERSION v2.2.5.</p>
@@ -157,7 +156,10 @@
             </div>
         </div>
 
-        <footer style="text-align: center; padding: 60px; color: #222; font-family:'Orbitron'; font-size: 10px;">&copy; 2026 ALONE MODDER // @AloneModderTEAM</footer>
+        <footer>
+            &copy; 2026 ALONE MODDER // ALL RIGHTS RESERVED
+            <span class="footer-owner">OWNER: ALONE MODDER / JOSHUA SAPICO</span>
+        </footer>
     </div>
 
     <a href="https://t.me/AloneModderTEAM" target="_blank" class="tg-fab">TELEGRAM</a>
@@ -187,13 +189,12 @@
                 localStorage.setItem('alone_session', u);
                 document.getElementById('auth-overlay').style.display = 'none';
                 initDashboard();
-            } else { alert("Minimum 3 characters required!"); }
+            } else { alert("ACCESS DENIED: Enter Details!"); }
         }
 
         function initDashboard() {
             const user = localStorage.getItem('alone_session');
             if(user) {
-                document.getElementById('session-info').innerText = `USER: ${user.toUpperCase()}`;
                 document.getElementById('mainUI').style.display = 'block';
                 setTimeout(() => { document.getElementById('mainUI').classList.add('active'); }, 50);
             } else { 
@@ -219,7 +220,7 @@
                 if(typeof particlesJS !== 'undefined') {
                     particlesJS("particles-js", {
                         "particles": {
-                            "number": { "value": 40 },
+                            "number": { "value": 50 },
                             "color": { "value": "#00f2ff" },
                             "opacity": { "value": 0.2 },
                             "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.1 },
